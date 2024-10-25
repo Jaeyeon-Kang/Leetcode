@@ -4,17 +4,15 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-   let numMap = new Map()
-  
-    for(let i=0; i<nums.length; i++){
-        numMap.set(nums[i], i)
-    }
-    
-    for(let i=0; i<nums.length; i++){
-        const complement = target-nums[i]
-        if(numMap.has(complement) && numMap.get(complement) !== i){
-            return [i, numMap.get(complement)]
+    let numMap = new Map();
+
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        // numMap에 complement가 있는지 확인해본다
+        if (numMap.has(complement)) {
+            return [numMap.get(complement), i];
         }
+        // numMap에 현재 숫자와 인덱스를 추가한다
+        numMap.set(nums[i], i);
     }
-    console.log(numMap)
 };
