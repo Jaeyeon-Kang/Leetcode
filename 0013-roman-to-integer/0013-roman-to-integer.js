@@ -3,21 +3,22 @@
  * @return {number}
  */
 var romanToInt = function(s) {
-    const roman = ['I','V','X','L','C','D','M']
-    const romanNum = [1,5,10,50,100,500,1000]
+    const roman = {
+        'I': 1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000
+    }
     let tmp = 0
     
     for(let i=0; i<s.length; i++){
-        let indexFirst = roman.indexOf(s[i])
-        let indexSecond = roman.indexOf(s[i+1])
-        console.log(indexFirst, indexSecond)
-        if(roman.indexOf(s[i]) >= roman.indexOf(s[i+1])) tmp += romanNum[indexFirst]
-        else if(roman.indexOf(s[i]) < roman.indexOf(s[i+1])) {
-            tmp += (romanNum[indexSecond]-romanNum[indexFirst])
-            i++   
+        let cur = roman[s[i]]
+        let next = roman[s[i+1]]
+        console.log(cur, next)
+        if(next > cur) {
+            tmp += (next-cur)
+            i++
         }
-        else if(roman.indexOf(s[i+1]) === -1) return
-        console.log(tmp)
+        else {
+            tmp += cur
+        }
         
     }
     //console.log(tmp)
