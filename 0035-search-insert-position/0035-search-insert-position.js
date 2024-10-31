@@ -14,13 +14,13 @@ var searchInsert = function(nums, target) {
             if(nums[i] > target) {
                 //console.log(nums[i], i, target)
                 answer = i
-                console.log(`answer1: ${answer}`)
+                //console.log(`answer1: ${answer}`)
                 break;
             } else {
                 answer=(i+1)
             }
         }   
-        console.log(`answer2: ${answer}`)
+        //console.log(`answer2: ${answer}`)
         return answer;
     }
    
