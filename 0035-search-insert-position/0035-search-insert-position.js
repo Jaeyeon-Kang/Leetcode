@@ -4,24 +4,19 @@
  * @return {number}
  */
 var searchInsert = function(nums, target) {
-    let indexNum = nums.indexOf(target)
-    let answer;
-    if(indexNum > -1){
-        answer = indexNum;
-        return answer;
-    } else {
-        for(let i=0; i<nums.length; i++){
-            if(nums[i] > target) {
-                //console.log(nums[i], i, target)
-                answer = i
-                //console.log(`answer1: ${answer}`)
-                break;
-            } else {
-                answer=(i+1)
-            }
-        }   
-        //console.log(`answer2: ${answer}`)
-        return answer;
-    }
+   let lt=0;
+   let rt=nums.length-1
+   
+   while(lt<=rt){
+       let mid = Math.floor((lt+rt)/2) 
+       if(nums[mid]===target){
+           return mid;
+       } else if(nums[mid]<target){
+           lt = mid+1
+       } else {
+           rt = mid - 1;
+       }
+   }
+    return lt;
    
 };
